@@ -1,4 +1,4 @@
-public class Problem23 {
+public class HProblem23 {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0)
             return null;
@@ -53,7 +53,7 @@ public class Problem23 {
     }
 
     public static void main(String[] args) {
-        Problem23 problem23 = new Problem23();
+        HProblem23 problem23 = new HProblem23();
         ListNode tail1 = new ListNode(5);
         ListNode two1 = new ListNode(4, tail1);
         ListNode head1 = new ListNode(1, two1);

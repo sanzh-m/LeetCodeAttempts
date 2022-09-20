@@ -1,4 +1,4 @@
-public class Problem25 {
+public class HProblem25 {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (k == 1)
             return head;
@@ -47,7 +47,7 @@ public class Problem25 {
     }
 
     public static void main(String[] args) {
-        Problem25 problem25 = new Problem25();
+        HProblem25 problem25 = new HProblem25();
         ListNode tail = new ListNode(9);
         ListNode eight = new ListNode(8, tail);
         ListNode seven = new ListNode(7, eight);

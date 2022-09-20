@@ -1,4 +1,4 @@
-public class Problem10 {
+public class HProblem10 {
     public boolean isMatch(String s, String p) {
         if (p.equals(".*") || s.equals(p))
             return true;
@@ -51,7 +51,7 @@ public class Problem10 {
     }
 
     public static void main(String[] args) {
-        Problem10 problem10 = new Problem10();
+        HProblem10 problem10 = new HProblem10();
         System.out.println(problem10.isMatch("a", "ab*"));
     }
 }
