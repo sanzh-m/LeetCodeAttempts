@@ -25,3 +25,8 @@ hs_err_pid*
 # IntelliJ related #
 .idea
 *.iml
+
+# Repl.it related #
+.breakpoints
+.replit
+replit.nix
