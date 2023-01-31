@@ -12,41 +12,38 @@ public class Problem33 {
             return result >= 0 ? result : -1;
         }
 
-        return searchRange(nums, target, 0, nums.length - 1);
+        int min = findMinIndex(nums), result;
+        if (target > nums[nums.length - 1])
+            result = Arrays.binarySearch(nums, 0, min, target);
+        else
+            result = Arrays.binarySearch(nums, min, nums.length, target);
+
+        return result >= 0 ? result : -1;
     }
 
-    private int searchRange(int[] nums, int target, int left, int right) {
-        if (right - left == 1) {
-            if (nums[left] == target)
-                return left;
-            if (nums[right] == target)
-                return right;
-            return -1;
-        }
-        int centre = (left + right) / 2;
-        if (target == nums[centre])
-            return centre;
-        if (target == nums[right])
-            return right;
-        if (target == nums[left])
-            return left;
-        if (nums[centre] < nums[right] && (target > nums[centre] && target > nums[right] || target < nums[centre]))
-            return searchRange(nums, target, left, centre);
-        if (nums[centre] < nums[right] && target > nums[centre] && target < nums[right]) {
-            int result = Arrays.binarySearch(nums, centre, right, target);
-            return result > 0 ? result : -1;
-        }
-        if (nums[centre] > nums[right] && (target > nums[centre] && target > nums[right] || target < nums[centre] && target < nums[right]))
-            return searchRange(nums, target, centre, right);
-        if (nums[centre] > nums[right] && target < nums[centre]) {
-            int result = Arrays.binarySearch(nums, left, centre, target);
-            return result > 0 ? result : -1;
-        }
-        return -1;
+    public int findMinIndex(int[] nums) {
+        if (nums[0] < nums[nums.length - 1])
+            return 0;
+        return binaryFindMin(nums, 0, nums.length);
+    }
+
+    private int binaryFindMin(int[] nums, int start, int end) {
+        if (end - start == 1)
+            return end != nums.length && nums[start] > nums[end] ? end : start;
+        int mid = (start + end) / 2;
+        if (nums[mid] > nums[start])
+            return binaryFindMin(nums, mid, end);
+        else
+            return binaryFindMin(nums, start, mid);
     }
 
     public static void main(String[] args) {
         Problem33 problem33 = new Problem33();
+        System.out.println(problem33.search(new int[]{1,2,3,4,5,6,7,8,9}, 8));
         System.out.println(problem33.search(new int[]{3,1}, 0));
+        System.out.println(problem33.search(new int[]{4,5,6,7,0,1,2}, 0));
+        System.out.println(problem33.search(new int[]{4,5,6,7,0,1,2}, 5));
+        System.out.println(problem33.search(new int[]{4,5,7,8,0,1,2}, 6));
+        System.out.println(problem33.search(new int[]{4,5,7,8,0,1,2}, 3));
     }
 }
