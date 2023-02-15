@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-public class Problem23 {
+public class Problem22 {
     // Idea from here: https://youtu.be/s9fokUqJ76A
     public List<String> generateParenthesis(int n) {
         backtrack(0, 0, n);
@@ -73,7 +73,7 @@ public class Problem23 {
     // }
 
     public static void main(String[] args) {
-        Problem23 problem23 = new Problem23();
+        Problem22 problem23 = new Problem22();
         for (String parenthesis: problem23.generateParenthesis(3)) {    
             System.out.println(parenthesis);  
         }
