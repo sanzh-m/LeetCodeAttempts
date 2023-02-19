@@ -7,18 +7,23 @@ public class Problem25 {
         if (k == 1)
             return head;
 
-        ListNode start, end = null, pointer = head, next, prev = null;
-        int counter = 0;
+        ListNode start = head, end = null, pointer = head, next, prev = null;
+        int length = 0;
         boolean headReassigned = false;
-        start = head;
 
-        while (checkRemainingLengthLargerK(start, k)) {
-            while (counter < k - 1) {
+        while (pointer != null) {
+            length++;
+            pointer = pointer.next;
+        }
+
+        pointer = head;
+
+        for (int i = 0; i < length / k; ++i) {
+            for (int j = 0; j < k - 1; ++j) {
                 next = pointer.next;
                 pointer.next = prev;
                 prev = pointer;
                 pointer = next;
-                counter++;
             }
             next = pointer.next;
             pointer.next = prev;
@@ -33,21 +38,8 @@ public class Problem25 {
             end = start;
             start = next;
             pointer = next;
-            counter = 0;
         }
         return head;
-    }
-
-    public boolean checkRemainingLengthLargerK(ListNode head, int k) {
-        int counter = 0;
-        ListNode pointer = head;
-
-        while (pointer != null && counter < k) {
-            counter++;
-            pointer = pointer.next;
-        }
-
-        return counter >= k;
     }
 
     public static void main(String[] args) {
