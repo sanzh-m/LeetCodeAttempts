@@ -16,8 +16,8 @@ public class Problem40 {
         List<Map.Entry<Integer, Integer>> candidateCount = new ArrayList<>(candidateMap.entrySet());
 
         for (int i = 0; i < candidateCount.size(); ++i) {
-            var results = combinationSumStartingFrom(candidateCount, target, i);
-            for (var result: results) {
+            List<List<Integer>> results = combinationSumStartingFrom(candidateCount, target, i);
+            for (List<Integer> result: results) {
                 if (existing.add(Arrays.toString(result.toArray())))
                     combinations.add(result);
             }
@@ -39,8 +39,8 @@ public class Problem40 {
         int current = candidateCount.get(begin).getKey();
 
         for (int i = 0; i <= target / current && i <= candidateCount.get(begin).getValue(); ++i) {
-            var results = combinationSumStartingFrom(candidateCount, target - i * current, begin + 1);
-            for (var result: results) {
+            List<List<Integer>> results = combinationSumStartingFrom(candidateCount, target - i * current, begin + 1);
+            for (List<Integer> result: results) {
                 for (int j = 0; j < i; ++j)
                     result.add(current);
             }
@@ -52,8 +52,8 @@ public class Problem40 {
 
     public static void main(String[] args) {
         Problem40 problem40 = new Problem40();
-        var results = problem40.combinationSum2(new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 27);
-        for (var result: results) {
+        List<List<Integer>> results = problem40.combinationSum2(new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 27);
+        for (List<Integer> result: results) {
             System.out.println(Arrays.toString(result.toArray()));
         }
     }

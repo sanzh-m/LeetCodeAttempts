@@ -3,6 +3,7 @@ package Medium;
 import java.util.*;
 
 public class Problem18 {
+    private static final Integer[] DUMMY = new Integer[0]; 
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Map<Integer, List<String>> pairsMap = new HashMap<>();
         List<List<Integer>> result = new ArrayList<>();
@@ -63,7 +64,7 @@ public class Problem18 {
                 listNums.add(numCount.getKey());
             }
         }
-        return listNums.toArray(Integer[]::new);
+        return listNums.toArray(DUMMY);
     }
 
     public static void main(String[] args) {

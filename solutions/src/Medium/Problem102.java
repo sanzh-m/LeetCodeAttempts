@@ -20,7 +20,7 @@ public class Problem102 {
             return;
         if (result.size() <= level)
             result.add(new ArrayList<>());
-        var list = result.get(level);
+        List<Integer> list = result.get(level);
         list.add(root.val);
         populateLevelOrder(root.left, level + 1, result);
         populateLevelOrder(root.right, level + 1, result);
@@ -38,9 +38,9 @@ public class Problem102 {
         TreeNode r = new TreeNode(8, rl, rr);
         TreeNode root = new TreeNode(6, l, r);
 
-        var result = problem102.levelOrder(root);
+        List<List<Integer>> result = problem102.levelOrder(root);
 
-        for (var list: result)
+        for (List<Integer> list: result)
             System.out.println(Arrays.toString(list.toArray()));
     }
 }

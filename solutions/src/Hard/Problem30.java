@@ -8,8 +8,8 @@ public class Problem30 {
         List<Integer> validIndexes = new ArrayList<>();
         int wordLength = words[0].length();
 
-        for (var word: words) {
-            var usage = wordsUsageMap.get(word);
+        for (String word: words) {
+            int[] usage = wordsUsageMap.get(word);
             if (usage == null)
                 wordsUsageMap.put(word, new int[]{0, 1});
             else
@@ -30,7 +30,7 @@ public class Problem30 {
 
         while (index + wordLength <= s.length() && wordsUsed < wordsToUse) {
             String substring = s.substring(index, index + wordLength);
-            var wordUsage = wordsUsage.get(substring);
+            int[] wordUsage = wordsUsage.get(substring);
             if (wordUsage == null || wordUsage[0] == wordUsage[1])
                 return false;
             wordUsage[0]++;
@@ -42,7 +42,7 @@ public class Problem30 {
     }
 
     private void resetUsageMap(Map<String, int[]> wordsUsageMap) {
-        for (var entry: wordsUsageMap.entrySet())
+        for (Map.Entry<String, int[]> entry: wordsUsageMap.entrySet())
             entry.getValue()[0] = 0;
     }
 

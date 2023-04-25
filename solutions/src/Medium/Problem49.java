@@ -6,9 +6,9 @@ public class Problem49 {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> anagramMapping = new HashMap<>();
 
-        for (var s: strs) {
-            var sortedString = sortString(s);
-            var list = anagramMapping.computeIfAbsent(sortedString, k -> new ArrayList<>());
+        for (String s: strs) {
+            String sortedString = sortString(s);
+            List<String> list = anagramMapping.computeIfAbsent(sortedString, k -> new ArrayList<>());
             list.add(s);
         }
 

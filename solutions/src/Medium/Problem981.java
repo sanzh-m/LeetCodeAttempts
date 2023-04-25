@@ -31,13 +31,13 @@ public class Problem981 {
         }
 
         public void set(String key, String value, int timestamp) {
-            var list = map.computeIfAbsent(key, k -> new ArrayList<>());
-            var timestampedValue = new TimestampedValue(value, timestamp);
+            List<TimestampedValue> list = map.computeIfAbsent(key, k -> new ArrayList<>());
+            TimestampedValue timestampedValue = new TimestampedValue(value, timestamp);
             list.add(timestampedValue);
         }
 
         public String get(String key, int timestamp) {
-            var list = map.get(key);
+            List<TimestampedValue> list = map.get(key);
             if (list == null)
                 return "";
             dummy.timestamp = timestamp;

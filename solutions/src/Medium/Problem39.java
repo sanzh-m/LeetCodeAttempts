@@ -9,8 +9,8 @@ public class Problem39 {
         Arrays.sort(candidates);
 
         for (int i = 0; i < candidates.length; ++i) {
-            var results = combinationSumStartingFrom(candidates, target, i);
-            for (var result: results) {
+            List<List<Integer>> results = combinationSumStartingFrom(candidates, target, i);
+            for (List<Integer> result: results) {
                 if (existing.add(Arrays.toString(result.toArray())))
                     combinations.add(result);
             }
@@ -32,8 +32,8 @@ public class Problem39 {
         int current = candidates[begin];
 
         for (int i = 0; i <= target / current; ++i) {
-            var results = combinationSumStartingFrom(candidates, target - i * current, begin + 1);
-            for (var result: results) {
+            List<List<Integer>> results = combinationSumStartingFrom(candidates, target - i * current, begin + 1);
+            for (List<Integer> result: results) {
                 for (int j = 0; j < i; ++j)
                     result.add(current);
             }
@@ -45,9 +45,9 @@ public class Problem39 {
 
     public static void main(String[] args) {
         Problem39 problem39 = new Problem39();
-        var results = problem39.combinationSum(new int[]{3,5,8}, 11);
+        List<List<Integer>> results = problem39.combinationSum(new int[]{3,5,8}, 11);
 
-        for (var result: results) {
+        for (List<Integer> result: results) {
             System.out.println(Arrays.toString(result.toArray()));
         }
     }

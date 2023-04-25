@@ -27,7 +27,7 @@ public class Problem84 {
         }
 
         while (!stack.isEmpty()) {
-            var pair = stack.pop();
+            Pair<Integer, Integer> pair = stack.pop();
             max = Math.max(max, (heights.length - pair.first) * pair.second);
         }
 

@@ -15,8 +15,8 @@ public class Problem347 {
         for (int i = 0; i <= nums.length; ++i)
             freq.add(null);
 
-        for (var countNum: countNums.entrySet()) {
-            var list = freq.get(countNum.getValue());
+        for (Map.Entry<Integer, Integer> countNum: countNums.entrySet()) {
+            List<Integer> list = freq.get(countNum.getValue());
             if (list == null) {
                 list = new ArrayList<>();
                 freq.set(countNum.getValue(), list);
@@ -27,11 +27,11 @@ public class Problem347 {
         int count = 0, pointer = nums.length;
 
         while (count < k) {
-            var list = freq.get(pointer);
+            List<Integer> list = freq.get(pointer);
             pointer--;
             if (list == null)
                 continue;
-            for (var val: list) {
+            for (Integer val: list) {
                 result[count] = val;
                 count++;
             }

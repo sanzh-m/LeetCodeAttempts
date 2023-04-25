@@ -4,7 +4,7 @@ import Util.TreeNode;
 
 public class Problem124 {
     public int maxPathSum(TreeNode root) {
-        var result = calcMaxPathSum(root);
+        Integer[] result = calcMaxPathSum(root);
         return result[1];
     }
     
@@ -12,8 +12,8 @@ public class Problem124 {
         if (root == null)
             return new Integer[]{null, null};
             
-        var leftRes = calcMaxPathSum(root.left);
-        var rightRes = calcMaxPathSum(root.right);
+        Integer[] leftRes = calcMaxPathSum(root.left);
+        Integer[] rightRes = calcMaxPathSum(root.right);
         
         Integer maxLen, maxSubLen, maxPath;
         

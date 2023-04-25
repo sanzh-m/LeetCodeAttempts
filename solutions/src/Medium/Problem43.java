@@ -5,6 +5,16 @@ import java.util.List;
 
 public class Problem43 {
     int ASCII_DIGIT_OFFSET = 48;
+    
+    private String generateZeroes(int num) {
+        StringBuilder sb = new StringBuilder();
+		    for (int i = 0; i < num; ++i) {
+		        sb.append("0");
+		    }
+		    
+		    return sb.toString();
+		}
+
 
     public String multiply(String num1, String num2) {
         if (num1.equals("0") || num2.equals("0")) {
@@ -20,7 +30,7 @@ public class Problem43 {
         List<String> steps = new ArrayList<>();
         int maxLength = 0;
         for (int i = 0; i < num2.length(); ++i) {
-            String step = multiplyStep(num1, num2.charAt(num2.length() - i - 1) - ASCII_DIGIT_OFFSET) + "0".repeat(i);
+            String step = multiplyStep(num1, num2.charAt(num2.length() - i - 1) - ASCII_DIGIT_OFFSET) + generateZeroes(i);
             steps.add(step);
             if (step.length() > maxLength)
                 maxLength = step.length();
@@ -30,7 +40,7 @@ public class Problem43 {
         int carry = 0;
         for (int i = 0; i < maxLength; ++i) {
             int sum = 0;
-            for (var step: steps) {
+            for (String step: steps) {
                 if (i >= step.length())
                     continue;
                 sum += step.charAt(step.length() - i - 1) - ASCII_DIGIT_OFFSET;
