@@ -30,3 +30,9 @@ hs_err_pid*
 .breakpoints
 .replit
 replit.nix
+
+# Igneous
+solutions/.classpath
+solutions/.project
+solutions/.settings
+solutions/src/.project
